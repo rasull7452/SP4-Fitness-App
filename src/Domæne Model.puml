@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+usecase "Start App"
+usecase "Login"
+usecase "Create User"
+usecase "Main Menu"
+usecase "Search Exercises"
+
+usecase "User Profile"
+usecase "Display Info"
+usecase "Show Saved Exercises"
+usecase "Show Saved Workout Plans"
+usecase "Show Saved"
+usecase "Show Saved Workout Sessions"
+usecase "Show Current Workout Plan"
+usecase "Make Own Workout Plan"
+usecase "Show Workout Plans"
+usecase "Show Workout Sessions"
+usecase "Calorie Calculator"
+usecase "Show & Edit Exercise Progress"
+usecase "Display Exercise"
+
+
+"Start App" --> Login
+"Start App" --> "Create User"
+"Create User" --> Login
+Login --> "Main Menu"
+"Main Menu" --> "Search Exercises"
+"Main Menu" --> "User Profile"
+"Main Menu" --> "Show Saved"
+"User Profile" --> "Display Info"
+"Show Saved" --> "Show Saved Exercises"
+"Main Menu" --> "Show Current Workout Plan"
+"Show Saved" --> "Show Saved Workout Plans"
+"Show Saved" --> "Show Saved Workout Sessions"
+"Main Menu" --> "Calorie Calculator"
+"Main Menu" --> "Make Own Workout Plan"
+"Main Menu" --> "Show Workout Plans"
+"Main Menu" --> "Show Workout Sessions"
+"Search Exercises" --> "Display Exercise"
+"Show Saved Exercises" --> "Display Exercise"
+"Show Saved Workout Plans" --> "Display Exercise"
+"Show Saved Workout Sessions" --> "Display Exercise"
+"Show Workout Sessions" --> "Display Exercise"
+"Show Workout Plans" --> "Display Exercise"
+"Show Current Workout Plan" --> "Display Exercise"
+"Display Exercise" --> "Show & Edit Exercise Progress"
+"Make Own Workout Plan" --> "Show Saved"
+"Make Own Workout Plan" --> "Search Exercises"
+"Make Own Workout Plan" --> "Show Workout Plans"
+"Make Own Workout Plan" --> "Show Workout Sessions"
+
+@enduml
