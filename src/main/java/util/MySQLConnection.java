@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class MySQLConnection {
 
-            private static final String url = "jdbc:mysql://jakeslimenetworks.nn.pe:3306/jakeslim_fitnessapp";
+            private static final String url = "jdbc:mysql://89.34.96.142:3306/jakeslim_fitnessapp";
             private static final String user = "jakeslim_rasull";
             private static final String password = "6y@d#BmbiZR(Z#7P";
 

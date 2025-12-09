@@ -1,10 +1,12 @@
 import java.sql.Connection;
+
+import org.mindrot.jbcrypt.BCrypt;
 import util.MySQLConnection;
 import util.TextUI;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class User {
     String userId;
@@ -36,6 +38,8 @@ public class User {
         String chosenUsername = ui.promptText("Username: ");
         String chosenPassword = ui.promptText("Password: ");
 
+        String hashedPassword = BCrypt.hashpw(chosenPassword, BCrypt.gensalt());
+
 
         try {
 
@@ -46,7 +50,7 @@ public class User {
             PreparedStatement prst = con.prepareStatement(sql);
 
             prst.setString(1, chosenUsername);
-            prst.setString(2, chosenPassword);
+            prst.setString(2, hashedPassword);
 
             prst.executeUpdate();
 
@@ -56,6 +60,25 @@ public class User {
     }
 
     public void login(){
+        String submittedUsername = ui.promptText("Username: ");
+        String submittedPassword = ui.promptText("Password: ");
 
+        try {
+
+            String sql1 = "SELECT username, password FROM users WHERE username = ?";
+
+            Connection con = MySQLConnection.getConnection();
+
+            PreparedStatement prst = con.prepareStatement(sql1);
+            prst.setString(1, submittedUsername);
+
+            ResultSet rs = prst.executeQuery();
+            rs.next();
+            String hashPassword = rs.getString("password");
+            System.out.println(BCrypt.checkpw(submittedPassword, hashPassword));
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
