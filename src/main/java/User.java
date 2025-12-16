@@ -1,3 +1,5 @@
+// Rasull
+
 import java.sql.Connection;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -9,17 +11,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User {
-    String userId;
-    String name;
-    String gender;
-    double weight;
-    double height;
-    int age;
-    String activityLevel;
-    double goal;
-    String currentPlan;
+    private String userId;
+    private String name;
+    private String gender;
+    private double weight;
+    private double height;
+    private int age;
+    private String activityLevel;
+    private double goal;
+    private String currentPlan;
 
-    TextUI ui = new TextUI();
+    private TextUI ui = new TextUI();
 
     public User(){
         this.userId = userId;
@@ -33,52 +35,66 @@ public class User {
         this.currentPlan = currentPlan;
     }
 
-    public void createUser(){
+//    public boolean isLoginSuccessful(String submittedUsername, String submittedPassword) {
+//
+//        String sql = "SELECT password FROM users WHERE username = ?";
+//
+//        try {
+//            Connection con = MySQLConnection.getConnection();
+//
+//            PreparedStatement prst = con.prepareStatement(sql);
+//            prst.setString(1, submittedUsername);
+//
+//            ResultSet rs = prst.executeQuery();
+//
+//            if(rs.next()){
+//                String hashPassword = rs.getString("password");
+//                return BCrypt.checkpw(submittedPassword, hashPassword);
+//            } else {
+//                return false;
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-        String chosenUsername = ui.promptText("Username: ");
-        String chosenPassword = ui.promptText("Password: ");
+//    public void createUser(){
+//
+//        String chosenUsername = ui.promptText("Username: ");
+//        String chosenPassword = ui.promptText("Password: ");
+//
+//        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+//
+//        String hashedPassword = BCrypt.hashpw(chosenPassword, BCrypt.gensalt());
+//
+//        try {
+//
+//            Connection con = MySQLConnection.getConnection();
+//
+//            PreparedStatement prst = con.prepareStatement(sql);
+//
+//            prst.setString(1, chosenUsername);
+//            prst.setString(2, hashedPassword);
+//
+//            prst.executeUpdate();
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-        String hashedPassword = BCrypt.hashpw(chosenPassword, BCrypt.gensalt());
+//    public void login(){
+//        String submittedUsername = ui.promptText("Username: ");
+//        String submittedPassword = ui.promptText("Password: ");
+//
+//        if(isLoginSuccessful(submittedUsername, submittedPassword)){
+//            ui.displayMsg("You have successfully logged in as " + submittedUsername);
+//        } else {
+//            ui.displayMsg("Invalid username or password, try again");
+//            login();
+//        }
+//    }
 
-
-        try {
-
-            String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-
-            Connection con = MySQLConnection.getConnection();
-
-            PreparedStatement prst = con.prepareStatement(sql);
-
-            prst.setString(1, chosenUsername);
-            prst.setString(2, hashedPassword);
-
-            prst.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void login(){
-        String submittedUsername = ui.promptText("Username: ");
-        String submittedPassword = ui.promptText("Password: ");
-
-        try {
-
-            String sql1 = "SELECT username, password FROM users WHERE username = ?";
-
-            Connection con = MySQLConnection.getConnection();
-
-            PreparedStatement prst = con.prepareStatement(sql1);
-            prst.setString(1, submittedUsername);
-
-            ResultSet rs = prst.executeQuery();
-            rs.next();
-            String hashPassword = rs.getString("password");
-            System.out.println(BCrypt.checkpw(submittedPassword, hashPassword));
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public static String getLoggedInUser() {
+//    }
 }
