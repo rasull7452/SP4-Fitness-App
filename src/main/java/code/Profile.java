@@ -1,3 +1,6 @@
+// Lavet af Rasull
+package code;
+
 import java.util.*;
 
 public class Profile {

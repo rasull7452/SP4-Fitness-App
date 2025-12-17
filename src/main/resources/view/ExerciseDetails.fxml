@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane prefHeight="697.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ExerciseDetailsController">
+   <children>
+      <WebView fx:id="videoView" layoutX="90.0" layoutY="149.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="nameLabel" alignment="CENTER" layoutX="91.0" layoutY="119.0" prefHeight="17.0" prefWidth="200.0" text="exerciseName" />
+      <Label fx:id="descriptionArea" alignment="TOP_CENTER" layoutX="88.0" layoutY="368.0" prefHeight="158.0" prefWidth="200.0" text="exerciseDescription" />
+      <Label fx:id="primaryMusclesLabel" alignment="TOP_CENTER" layoutX="8.0" layoutY="368.0" prefHeight="105.0" prefWidth="80.0" text="primarymuscles" />
+      <Label fx:id="secondaryMusclesLabel" alignment="TOP_CENTER" layoutX="8.0" layoutY="482.0" prefHeight="105.0" prefWidth="80.0" text="secondarymuscles" />
+      <Label fx:id="setsLabel" alignment="TOP_CENTER" layoutX="291.0" layoutY="368.0" prefHeight="24.0" prefWidth="80.0" text="sets" />
+      <Label fx:id="repsLabel" alignment="TOP_CENTER" layoutX="291.0" layoutY="392.0" prefHeight="24.0" prefWidth="80.0" text="reps" />
+      <Label fx:id="restTimeLabel" alignment="TOP_CENTER" layoutX="291.0" layoutY="416.0" prefHeight="24.0" prefWidth="80.0" text="restTime" />
+   </children>
+</AnchorPane>

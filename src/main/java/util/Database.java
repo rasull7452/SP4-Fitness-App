@@ -1,4 +1,4 @@
-// Rasull
+// Lavet af Rasull
 package util;
 
 import java.sql.Connection;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Database {
 
-    private static final String url = "jdbc:sqlite:exercises.db";
+    private static final String url = "jdbc:sqlite:src/gym_exercises.db";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url);

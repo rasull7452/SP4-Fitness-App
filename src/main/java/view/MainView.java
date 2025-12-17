@@ -1,4 +1,4 @@
-// Rasull
+// Lavet af Rasull
 
 package view;
 

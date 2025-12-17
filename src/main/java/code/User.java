@@ -1,14 +1,7 @@
-// Rasull
+// Lavet af Rasull
+package code;
 
-import java.sql.Connection;
-
-import org.mindrot.jbcrypt.BCrypt;
-import util.MySQLConnection;
 import util.TextUI;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class User {
     private String userId;

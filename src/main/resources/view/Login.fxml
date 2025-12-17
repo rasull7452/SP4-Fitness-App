@@ -16,6 +16,6 @@
             <Font name="Calibri" size="56.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="164.0" layoutY="380.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Button layoutX="164.0" layoutY="380.0" mnemonicParsing="false" onAction="#login" text="Login" />
    </children>
 </AnchorPane>

@@ -1,4 +1,4 @@
-// Rasull
+// Lavet af Rasull
 
 package view;
 
@@ -73,6 +73,25 @@ public class LoginController {
         }
     }
 
+    public void login(ActionEvent event) throws IOException {
+        String submittedUsername = username.getText();
+        String submittedPassword = password.getText();
+
+        if(isLoginSuccessful(submittedUsername, submittedPassword)){
+            loggedInUser = submittedUsername;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+            root = loader.load();
+
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } else {
+            switchToStartMenu(event);
+        }
+    }
+
     public void switchToStartMenu(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainView.fxml"));
         root = loader.load();
@@ -81,26 +100,6 @@ public class LoginController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void login(ActionEvent event) throws IOException {
-        String submittedUsername = username.getText();
-        String submittedPassword = password.getText();
-
-        if(isLoginSuccessful(submittedUsername, submittedPassword)){
-            loggedInUser = submittedUsername;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
-            root = loader.load();
-
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-            MainMenuController mainMenuController = loader.getController();
-            mainMenuController.displayName(submittedUsername);
-        } else {
-            switchToStartMenu(event);
-        }
     }
 
     public static String getLoggedInUser() {

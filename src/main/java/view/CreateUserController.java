@@ -1,4 +1,4 @@
-// Rasull
+// Lavet af Rasull
 
 package view;
 
@@ -34,23 +34,24 @@ public class CreateUserController {
 
         String chosenUsername = username.getText();
         String chosenPassword = password.getText();
-
-        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        String sql1 = "SELECT username FROM users WHERE username = ?";
+        String sql2 = "INSERT INTO users (username, password) VALUES (?, ?)";
 
         String hashedPassword = BCrypt.hashpw(chosenPassword, BCrypt.gensalt());
+
 
         try {
 
             Connection con = MySQLConnection.getConnection();
 
-            PreparedStatement prst = con.prepareStatement(sql);
+            PreparedStatement prst = con.prepareStatement(sql2);
 
             prst.setString(1, chosenUsername);
             prst.setString(2, hashedPassword);
 
             prst.executeUpdate();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountCreated.fxml"));
             root = loader.load();
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
